@@ -6,6 +6,8 @@ import { MoonStarIcon, StarIcon, SunIcon } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { Image, type ImageStyle, View } from 'react-native';
+import * as Application from 'expo-application';
+import { useAuthStore } from '@/store/auth-store';
 
 const LOGO = {
   light: require('@/assets/images/react-native-reusables-light.png'),
@@ -13,7 +15,7 @@ const LOGO = {
 };
 
 const SCREEN_OPTIONS = {
-  title: 'React Native Reusables',
+  title: 'Home',
   headerTransparent: true,
   headerRight: () => <ThemeToggle />,
 };
@@ -25,6 +27,7 @@ const IMAGE_STYLE: ImageStyle = {
 
 export default function Screen() {
   const { colorScheme } = useColorScheme();
+  const { logout } = useAuthStore();
 
   return (
     <>
@@ -32,26 +35,14 @@ export default function Screen() {
       <View className="flex-1 items-center justify-center gap-8 p-4">
         <Image source={LOGO[colorScheme ?? 'light']} style={IMAGE_STYLE} resizeMode="contain" />
         <View className="gap-2 p-4">
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            1. Edit <Text variant="code">app/index.tsx</Text> to get started.
-          </Text>
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            2. Save to see your changes instantly.
+          <Text className="ios:text-foreground font-mono text-lg text-muted-foreground">
+            Home Screen
           </Text>
         </View>
-        <View className="flex-row gap-2">
-          <Link href="https://reactnativereusables.com" asChild>
-            <Button>
-              <Text>Browse the Docs</Text>
-            </Button>
-          </Link>
-          <Link href="https://github.com/founded-labs/react-native-reusables" asChild>
-            <Button variant="ghost">
-              <Text>Star the Repo</Text>
-              <Icon as={StarIcon} />
-            </Button>
-          </Link>
-        </View>
+
+        <Button>
+          <Text>Logout</Text>
+        </Button>
       </View>
     </>
   );

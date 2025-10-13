@@ -1,4 +1,4 @@
-# Minimal Template
+# Minimal Template (Cloned from React Native Reusables)
 
 This is a [React Native](https://reactnative.dev/) project built with [Expo](https://expo.dev/) and [React Native Reusables](https://reactnativereusables.com).
 
@@ -8,27 +8,12 @@ It was initialized using the following command:
 npx @react-native-reusables/cli@latest init -t expo-sample
 ```
 
-## Getting Started
+## TODO FOR NEW PROJECT
 
-To run the development server:
-
-```bash
-    npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
-    # or
-    bun dev
-```
-
-This will start the Expo Dev Server. Open the app in:
-
-- **iOS**: press `i` to launch in the iOS simulator _(Mac only)_
-- **Android**: press `a` to launch in the Android emulator
-- **Web**: press `w` to run in a browser
-
-You can also scan the QR code using the [Expo Go](https://expo.dev/go) app on your device. This project fully supports running in Expo Go for quick testing on physical devices.
+- Create Project on Expo
+- Update app.config.ts with credentials from the project created in stp 1
+- Update environment variables for all supported environments on eas
+-
 
 ## Adding components
 
@@ -69,5 +54,3 @@ The easiest way to deploy your app is with [Expo Application Services (EAS)](htt
 - [EAS Submit](https://docs.expo.dev/submit/introduction/)
 
 ---
-
-If you enjoy using React Native Reusables, please consider giving it a ⭐ on [GitHub](https://github.com/founded-labs/react-native-reusables). Your support means a lot!

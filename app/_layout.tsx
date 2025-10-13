@@ -1,6 +1,7 @@
 import '@/global.css';
 
 import { NAV_THEME } from '@/lib/theme';
+import { useAuthStore } from '@/store/auth-store';
 import { ThemeProvider } from '@react-navigation/native';
 import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
@@ -14,11 +15,23 @@ export {
 
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();
+  const { isLoggedIn } = useAuthStore();
+
+  // Use ColorScheme from nativewind
+  // value={NAV_THEME[colorScheme ?? 'light']}
 
   return (
     <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-      <Stack />
+      <Stack>
+        <Stack.Protected guard={isLoggedIn}>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack.Protected>
+
+        <Stack.Protected guard={!isLoggedIn}>
+          <Stack.Screen name="login" />
+        </Stack.Protected>
+      </Stack>
       <PortalHost />
     </ThemeProvider>
   );
