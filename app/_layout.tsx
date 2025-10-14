@@ -15,10 +15,7 @@ export {
 
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();
-  const { isLoggedIn } = useAuthStore();
-
-  // Use ColorScheme from nativewind
-  // value={NAV_THEME[colorScheme ?? 'light']}
+  const { isLoggedIn, hasCompletedOnboarding } = useAuthStore();
 
   return (
     <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
@@ -28,8 +25,12 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         </Stack.Protected>
 
-        <Stack.Protected guard={!isLoggedIn}>
+        <Stack.Protected guard={!isLoggedIn && hasCompletedOnboarding}>
           <Stack.Screen name="login" />
+        </Stack.Protected>
+
+        <Stack.Protected guard={!hasCompletedOnboarding}>
+          <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         </Stack.Protected>
       </Stack>
       <PortalHost />

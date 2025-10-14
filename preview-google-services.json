@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609644722631",
+    "project_id": "expo-sample-template-dev",
+    "storage_bucket": "expo-sample-template-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609644722631:android:4e72a6d2e463aa5e1641e2",
+        "android_client_info": {
+          "package_name": "com.sampleTemplate.preview"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpOniwgxVx2B5ZgjZkCkUCcqvJ2F2qkGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

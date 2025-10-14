@@ -28,7 +28,7 @@ const appIconBadgeConfig: AppIconBadgeConfig = {
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  const { name, bundleIdentifier, packageName, scheme } = getDynamicAppConfig(
+  const { name, bundleIdentifier, packageName, scheme, googleServicesFile } = getDynamicAppConfig(
     (process.env.APP_ENV as 'development' | 'preview' | 'production') || 'development'
   );
 
@@ -73,13 +73,19 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         backgroundColor: '#ffffff',
       },
       package: packageName,
+      googleServicesFile,
     },
     web: {
       bundler: 'metro',
       output: 'static',
       favicon: './assets/images/favicon.png',
     },
-    plugins: ['expo-router', ['app-icon-badge', appIconBadgeConfig], 'expo-sqlite'],
+    plugins: [
+      'expo-router',
+      ['app-icon-badge', appIconBadgeConfig],
+      'expo-sqlite',
+      'expo-notifications',
+    ],
     extra: {
       eas: {
         projectId: EAS_PROJECT_ID,
@@ -95,6 +101,7 @@ export const getDynamicAppConfig = (environment: 'development' | 'preview' | 'pr
       bundleIdentifier: BUNDLE_IDENTIFIER,
       packageName: PACKAGE_NAME,
       scheme: SCHEME,
+      googleServicesFile: './dev-google-services.json',
     };
   }
 
@@ -104,6 +111,7 @@ export const getDynamicAppConfig = (environment: 'development' | 'preview' | 'pr
       bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
       packageName: `${PACKAGE_NAME}.preview`,
       scheme: `${SCHEME}-prev`,
+      googleServicesFile: './dev-google-services.json',
     };
   }
 
@@ -112,5 +120,6 @@ export const getDynamicAppConfig = (environment: 'development' | 'preview' | 'pr
     bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
     packageName: `${PACKAGE_NAME}.dev`,
     scheme: `${SCHEME}-dev`,
+    googleServicesFile: './dev-google-services.json',
   };
 };
