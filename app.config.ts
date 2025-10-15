@@ -39,7 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     owner: OWNER,
     scheme: scheme,
     slug: PROJECT_SLUG,
-    version: version, // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
+    version: version, // Automatically bump your project version with `pnpm version patch`, `pnpm version minor` or `pnpm version major`.
     orientation: 'portrait',
     icon: './assets/images/icon.png',
     userInterfaceStyle: 'automatic',
@@ -101,7 +101,7 @@ export const getDynamicAppConfig = (environment: 'development' | 'preview' | 'pr
       bundleIdentifier: BUNDLE_IDENTIFIER,
       packageName: PACKAGE_NAME,
       scheme: SCHEME,
-      googleServicesFile: './dev-google-services.json',
+      googleServicesFile: './prod-google-services.json',
     };
   }
 
@@ -111,7 +111,7 @@ export const getDynamicAppConfig = (environment: 'development' | 'preview' | 'pr
       bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
       packageName: `${PACKAGE_NAME}.preview`,
       scheme: `${SCHEME}-prev`,
-      googleServicesFile: './dev-google-services.json',
+      googleServicesFile: './preview-google-services.json',
     };
   }
 

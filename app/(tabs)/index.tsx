@@ -141,6 +141,15 @@ export default function Screen() {
           <Text className="ios:text-foreground font-mono text-lg text-muted-foreground">
             Home Screen
           </Text>
+          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
+            Your Expo push token: {expoPushToken}
+          </Text>
+          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
+            Title: {notification && notification.request.content.title}
+          </Text>
+          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
+            Title: Body: {notification && notification.request.content.body}
+          </Text>
         </View>
 
         <Button onPress={logout}>
