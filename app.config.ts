@@ -3,13 +3,13 @@ import type { ConfigContext, ExpoConfig } from '@expo/config';
 import type { AppIconBadgeConfig } from 'app-icon-badge/types';
 import { version } from './package.json';
 
-const EAS_PROJECT_ID = '308d5d5c-43d6-46a6-93b0-79547d296355';
-const PROJECT_SLUG = 'sampletemplate';
+const EAS_PROJECT_ID = 'eff7876c-f5b5-43fc-89db-bee61e1dc263';
+const PROJECT_SLUG = 'pre-xervices';
 const OWNER = 'pena56';
-const BUNDLE_IDENTIFIER = 'com.sampleTemplate'; // ios bundle id
-const PACKAGE_NAME = 'com.sampleTemplate'; // android package name
-const APP_NAME = 'SampleTemplate'; // app name
-const SCHEME = 'sampletemplate'; // app scheme
+const BUNDLE_IDENTIFIER = 'com.prexervices.general.com'; // ios bundle id
+const PACKAGE_NAME = 'com.prexervices.general.com'; // android package name
+const APP_NAME = 'PreXervices'; // app name
+const SCHEME = 'prexervices'; // app scheme
 
 const appIconBadgeConfig: AppIconBadgeConfig = {
   enabled: process.env.APP_ENV !== 'production',
@@ -81,6 +81,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       favicon: './assets/images/favicon.png',
     },
     plugins: [
+      [
+        'expo-font',
+        {
+          fonts: ['./assets/fonts/CabinetGrotesk.ttf'],
+        },
+      ],
       'expo-router',
       ['app-icon-badge', appIconBadgeConfig],
       'expo-sqlite',

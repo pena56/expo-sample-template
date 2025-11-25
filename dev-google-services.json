@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "730609918552",
+    "project_id": "pre-xervices-dev",
+    "storage_bucket": "pre-xervices-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730609918552:android:98a35891e0bf5398c5e02d",
+        "android_client_info": {
+          "package_name": "com.prexervices.general.com.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVSE4ou0EPTq2yi5txUINkZzuDNOxGI3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

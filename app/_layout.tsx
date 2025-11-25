@@ -18,7 +18,8 @@ export default function RootLayout() {
   const { isLoggedIn, hasCompletedOnboarding } = useAuthStore();
 
   return (
-    <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
+    // <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
+    <>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       <Stack>
         <Stack.Protected guard={isLoggedIn}>
@@ -34,6 +35,7 @@ export default function RootLayout() {
         </Stack.Protected>
       </Stack>
       <PortalHost />
-    </ThemeProvider>
+    </>
+    // </ThemeProvider>
   );
 }

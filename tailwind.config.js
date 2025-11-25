@@ -8,19 +8,58 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Base colors
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        background: '#F4F4F5',
         foreground: 'hsl(var(--foreground))',
+
+        // Brand Colors
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: '#FE6A00',
+          dark: '#002082',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: '#FE6A00',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+
+        // State Colors
+        info: {
+          DEFAULT: '#0582F1',
+          foreground: 'hsl(var(--info))',
+        },
+        success: {
+          DEFAULT: '#2BC84E',
+          foreground: 'hsl(var(--success))',
+        },
+        warning: {
+          DEFAULT: '#F46600',
+          foreground: 'hsl(var(--warning))',
+        },
+        error: {
+          DEFAULT: '#F00628',
+          foreground: 'hsl(var(--error))',
+        },
+
+        // Black and White
+        black: {
+          1: '#1F1F1F',
+        },
+        white: '#FFFFFF',
+
+        // Grey Colors
+        gray: {
+          1: '#C8C8CF',
+          2: '#D4D4D8',
+          3: '#DFDFE1',
+          4: '#E9E9EB',
+          5: '#F4F4F5',
+        },
+
+        // Legacy colors (kept for compatibility)
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
@@ -46,6 +85,9 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        cabinet: ['CabinetGrotesk'],
       },
       borderWidth: {
         hairline: hairlineWidth(),

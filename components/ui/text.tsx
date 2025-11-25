@@ -9,6 +9,7 @@ const textVariants = cva(
     'text-base text-foreground',
     Platform.select({
       web: 'select-text',
+      default: 'font-cabinet',
     })
   ),
   {
