@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 import { Platform, Pressable } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
 const buttonVariants = cva(
   cn(
@@ -17,8 +16,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'border border-[#CC5600] shadow-sm shadow-black/5',
-          Platform.select({ web: 'hover:opacity-90 active:opacity-90' })
+          'border border-[#CC5600] bg-[#FE6A00] shadow-sm shadow-black/5 active:bg-primary/90',
+          Platform.select({ web: 'hover:bg-primary/90' })
         ),
         destructive: cn(
           'bg-destructive shadow-sm shadow-black/5 active:bg-destructive/90 dark:bg-destructive/60',
@@ -58,7 +57,7 @@ const buttonVariants = cva(
 
 const buttonTextVariants = cva(
   cn(
-    'text-sm font-medium text-foreground',
+    'font-cabinet-extrabold text-sm text-foreground',
     Platform.select({ web: 'pointer-events-none transition-colors' })
   ),
   {
@@ -102,30 +101,6 @@ function Button({ className, variant, size, children, icon, ...props }: ButtonPr
   const hasText =
     typeof children === 'string' || (React.isValidElement(children) && children.type === Text);
 
-  const isDefaultVariant = variant === 'default' || variant === undefined;
-
-  // If default variant, wrap with LinearGradient
-  if (isDefaultVariant) {
-    return (
-      <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
-        <Pressable
-          className={cn(props.disabled && 'opacity-50', 'overflow-hidden rounded-full')}
-          role="button"
-          {...props}>
-          <LinearGradient
-            colors={['#FE6A00', '#E15D02']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            className={cn(buttonVariants({ variant, size }), className)}>
-            {icon}
-            {typeof children === 'string' ? <Text>{children}</Text> : children}
-          </LinearGradient>
-        </Pressable>
-      </TextClassContext.Provider>
-    );
-  }
-
-  // For other variants, use regular Pressable
   return (
     <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
       <Pressable

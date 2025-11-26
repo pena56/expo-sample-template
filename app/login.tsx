@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { InputError } from '@/components/ui/input-error';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Image } from 'expo-image';
+import * as Haptics from 'expo-haptics';
 
 const formSchema = z.object({
   email: z.email().min(1, 'Email is required.'),
@@ -26,7 +27,7 @@ export default function Screen() {
   const [checked, setChecked] = React.useState(false);
 
   function onCheckedChange(checked: boolean) {
-    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setChecked(checked);
   }
 
@@ -65,6 +66,7 @@ export default function Screen() {
                   onChangeText={field.handleChange}
                   placeholder="Enter your email"
                   hasError={!field.state.meta.isValid}
+                  keyboardType="email-address"
                 />
                 {!field.state.meta.isValid ? <InputError errors={field.state.meta.errors} /> : null}
               </View>
@@ -105,7 +107,7 @@ export default function Screen() {
               className="text-sm"
               onPress={Platform.select({
                 native: () => {
-                  // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                   setChecked((prev) => !prev);
                 },
               })}>
@@ -139,7 +141,7 @@ export default function Screen() {
         <View className="flex flex-row items-center justify-center gap-1.5">
           <Text className="text-[#737381]">Don’t have an account?</Text>
 
-          <Pressable>
+          <Pressable onPress={() => router.navigate('/register')}>
             <Text className="text-primary">Sign Up</Text>
           </Pressable>
         </View>

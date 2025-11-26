@@ -19,14 +19,14 @@ export function InputError({ errors }: InputErrorProps) {
 
   return (
     <View className="flex gap-0">
-      {/* {uniqueErrors.map(
+      {uniqueErrors.map(
         (error, index) =>
           error?.message && (
             <Text className="text-error font-cabinet text-xs" key={index}>
               {error.message}
             </Text>
           )
-      )} */}
+      )}
     </View>
   );
 }
