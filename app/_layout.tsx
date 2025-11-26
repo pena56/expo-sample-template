@@ -8,6 +8,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'nativewind';
 import { Toaster } from 'sonner-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -20,7 +21,7 @@ export default function RootLayout() {
 
   return (
     // <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
-    <>
+    <GestureHandlerRootView>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       <Stack>
         <Stack.Protected guard={isLoggedIn}>
@@ -43,9 +44,10 @@ export default function RootLayout() {
           <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         </Stack.Protected>
       </Stack>
-      {/* <Toaster /> */}
+      <Toaster />
       <PortalHost />
-    </>
+      //{' '}
+    </GestureHandlerRootView>
     // </ThemeProvider>
   );
 }
