@@ -50,7 +50,12 @@ export default function Screen() {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
-      console.log(value);
+      router.navigate({
+        pathname: '/verify-email',
+        params: {
+          email: value.email,
+        },
+      });
     },
   });
 

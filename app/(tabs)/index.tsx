@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import { Text } from '@/components/ui/text';
-import { Link, Stack } from 'expo-router';
+import { Link, router, Stack } from 'expo-router';
 import { MoonStarIcon, StarIcon, SunIcon } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
@@ -152,8 +152,12 @@ export default function Screen() {
           </Text>
         </View>
 
-        <Button onPress={logout}>
-          <Text>Logout</Text>
+        <Button
+          onPress={() => {
+            logout();
+            router.navigate('/login');
+          }}>
+          Logout
         </Button>
       </View>
     </>

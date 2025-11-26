@@ -7,6 +7,7 @@ import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'nativewind';
+import { Toaster } from 'sonner-native';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -34,10 +35,15 @@ export default function RootLayout() {
           <Stack.Screen name="register" options={{ headerShown: false }} />
         </Stack.Protected>
 
+        <Stack.Protected guard={!isLoggedIn && hasCompletedOnboarding}>
+          <Stack.Screen name="verify-email" options={{ headerShown: false }} />
+        </Stack.Protected>
+
         <Stack.Protected guard={!hasCompletedOnboarding}>
           <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         </Stack.Protected>
       </Stack>
+      {/* <Toaster /> */}
       <PortalHost />
     </>
     // </ThemeProvider>
