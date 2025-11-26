@@ -47,7 +47,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     splash: {
       image: './assets/images/splash.png',
       resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#E15D02',
     },
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
@@ -84,7 +84,16 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-font',
         {
-          fonts: ['./assets/fonts/CabinetGrotesk.ttf'],
+          fonts: [
+            './assets/fonts/CabinetGrotesk-Thin.otf',
+            './assets/fonts/CabinetGrotesk-Extralight.otf',
+            './assets/fonts/CabinetGrotesk-Light.otf',
+            './assets/fonts/CabinetGrotesk-Regular.otf',
+            './assets/fonts/CabinetGrotesk-Medium.otf',
+            './assets/fonts/CabinetGrotesk-Bold.otf',
+            './assets/fonts/CabinetGrotesk-Extrabold.otf',
+            './assets/fonts/CabinetGrotesk-Black.otf',
+          ],
         },
       ],
       'expo-router',

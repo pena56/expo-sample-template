@@ -6,16 +6,15 @@ import { Platform, Text as RNText, type Role } from 'react-native';
 
 const textVariants = cva(
   cn(
-    'text-base text-foreground',
+    'text-base text-foreground font-cabinet',
     Platform.select({
       web: 'select-text',
-      default: 'font-cabinet',
     })
   ),
   {
     variants: {
       variant: {
-        default: 'font-regular',
+        default: '',
         h1: cn(
           'text-center text-4xl font-extrabold tracking-tight',
           Platform.select({ web: 'scroll-m-20 text-balance' })

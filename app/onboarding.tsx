@@ -181,7 +181,7 @@ export default function Screen() {
                 </View>
               </View>
 
-              <Button className="mt-2" onPress={completeOnboarding}>
+              <Button size={'sm'} className="mt-2" onPress={completeOnboarding}>
                 Get Started
               </Button>
             </Animated.View>

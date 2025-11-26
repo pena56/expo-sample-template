@@ -1,56 +1,149 @@
-import { Button } from '@/components/ui/button';
-import { Icon } from '@/components/ui/icon';
-import { Text } from '@/components/ui/text';
-import { Link, Stack } from 'expo-router';
-import { MoonStarIcon, StarIcon, SunIcon } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import * as React from 'react';
-import { Image, type ImageStyle, View } from 'react-native';
-import * as Application from 'expo-application';
+import { Platform, Pressable, View } from 'react-native';
 import { useAuthStore } from '@/store/auth-store';
+import { Text } from '@/components/ui/text';
+import { Layout } from '@/components/layout';
+import { Icon } from '@/components/ui/icon';
+import { router } from 'expo-router';
+import { AuthHeader } from '@/components/auth-header';
+import { useForm } from '@tanstack/react-form';
+import * as z from 'zod';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { InputError } from '@/components/ui/input-error';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Image } from 'expo-image';
 
-const SCREEN_OPTIONS = {
-  title: 'Login',
-  headerTransparent: true,
-  headerRight: () => <ThemeToggle />,
-};
+const formSchema = z.object({
+  email: z.email().min(1, 'Email is required.'),
+  password: z.string().min(1, 'Password is required.'),
+});
 
 export default function Screen() {
   const { login } = useAuthStore();
 
-  return (
-    <>
-      <Stack.Screen options={SCREEN_OPTIONS} />
-      <View className="flex-1 items-center justify-center gap-8 p-4">
-        <View className="gap-2 p-4">
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            APP ID: {Application.applicationId}
-          </Text>
+  const [checked, setChecked] = React.useState(false);
 
-          <Button onPress={login}>
-            <Text>Login</Text>
-          </Button>
+  function onCheckedChange(checked: boolean) {
+    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setChecked(checked);
+  }
+
+  const form = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    validators: {
+      onSubmit: formSchema,
+    },
+    onSubmit: async ({ value }) => {
+      console.log(value);
+    },
+  });
+
+  return (
+    <Layout>
+      <View className="flex-1 gap-6">
+        <View className="flex gap-2">
+          <AuthHeader title="Login" />
+
+          <Text className="text-center text-[#737381]">
+            Enter your email and password to log in
+          </Text>
+        </View>
+
+        <View className="flex gap-4">
+          <form.Field name="email">
+            {(field) => (
+              <View>
+                <Label nativeID="email">Email</Label>
+                <Input
+                  id="email"
+                  value={field.state.value}
+                  onChangeText={field.handleChange}
+                  placeholder="Enter your email"
+                  hasError={!field.state.meta.isValid}
+                />
+                {!field.state.meta.isValid ? <InputError errors={field.state.meta.errors} /> : null}
+              </View>
+            )}
+          </form.Field>
+
+          <form.Field name="password">
+            {(field) => (
+              <View>
+                <Label nativeID="password">Password</Label>
+                <Input
+                  id="password"
+                  value={field.state.value}
+                  onChangeText={field.handleChange}
+                  placeholder="Enter your password"
+                  secureTextEntry
+                  hasError={!field.state.meta.isValid}
+                />
+                {!field.state.meta.isValid ? <InputError errors={field.state.meta.errors} /> : null}
+              </View>
+            )}
+          </form.Field>
+
+          <Button onPress={form.handleSubmit}>Log In</Button>
+        </View>
+
+        <View className="flex w-full flex-row items-center justify-between">
+          <View className="flex-row items-center gap-2">
+            <Checkbox
+              aria-labelledby="remember-me-checkbox"
+              id="remember-me-checkbox"
+              checked={checked}
+              onCheckedChange={onCheckedChange}
+            />
+            <Label
+              nativeID="remember-me-checkbox"
+              htmlFor="remember-me-checkbox"
+              className="text-sm"
+              onPress={Platform.select({
+                native: () => {
+                  // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  setChecked((prev) => !prev);
+                },
+              })}>
+              Remember me
+            </Label>
+          </View>
+
+          <Pressable>
+            <Text className="font-cabinet-medium text-sm text-primary">Forgot Password ?</Text>
+          </Pressable>
+        </View>
+
+        <View className="flex w-full flex-row items-center justify-between gap-4">
+          <View className="h-0.5 flex-1 bg-[#FFDCC1]" />
+
+          <Text className="text-sm text-[#B4B4BC]">Or</Text>
+
+          <View className="h-0.5 flex-1 bg-[#FFDCC1]" />
+        </View>
+
+        <Button className="border-[#B4B4BC] bg-background">
+          <Image
+            source={require('@/assets/icons/google.svg')}
+            style={{ width: 18, height: 18 }}
+            contentFit="contain"
+          />
+
+          <Text className="font-cabinet-extrabold text-[#737381]">Continue with Google</Text>
+        </Button>
+
+        <View className="flex flex-row items-center justify-center gap-1.5">
+          <Text className="text-[#737381]">Don’t have an account?</Text>
+
+          <Pressable>
+            <Text className="text-primary">Sign Up</Text>
+          </Pressable>
         </View>
       </View>
-    </>
-  );
-}
-
-const THEME_ICONS = {
-  light: SunIcon,
-  dark: MoonStarIcon,
-};
-
-function ThemeToggle() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
-
-  return (
-    <Button
-      onPressIn={toggleColorScheme}
-      size="icon"
-      variant="ghost"
-      className="ios:size-9 rounded-full web:mx-4">
-      <Icon as={THEME_ICONS[colorScheme ?? 'light']} className="size-5" />
-    </Button>
+    </Layout>
   );
 }
