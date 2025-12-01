@@ -15,6 +15,7 @@ import { InputError } from '@/components/ui/input-error';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
+import { toast } from 'sonner-native';
 
 const formSchema = z.object({
   email: z.email().min(1, 'Email is required.'),
@@ -40,6 +41,7 @@ export default function Screen() {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
+      toast.success('Login was successful');
       console.log(value);
     },
   });
@@ -115,7 +117,7 @@ export default function Screen() {
             </Label>
           </View>
 
-          <Pressable>
+          <Pressable onPress={() => router.navigate('/forgot-password')}>
             <Text className="font-cabinet-medium text-sm text-primary">Forgot Password ?</Text>
           </Pressable>
         </View>
