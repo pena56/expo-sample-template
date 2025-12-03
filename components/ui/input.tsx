@@ -11,10 +11,11 @@ interface InputProps extends TextInputProps {
   secureTextEntry?: boolean;
   /** Whether the field has a validation error */
   hasError?: boolean;
+  icon?: React.ReactNode;
 }
 
 const Input = React.forwardRef<TextInput, InputProps>(
-  ({ className, placeholderClassName, secureTextEntry, hasError, ...props }, ref) => {
+  ({ className, placeholderClassName, secureTextEntry, hasError, icon, ...props }, ref) => {
     const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
 
     // Determine if this is meant to be a secure input (password field)
@@ -36,12 +37,13 @@ const Input = React.forwardRef<TextInput, InputProps>(
           secureTextEntry={isSecureInput ? !isPasswordVisible : secureTextEntry}
           className={cn(
             // Base styles
-            'font-cabinet flex h-[56px] w-full min-w-0 flex-row items-center rounded-[4px] border bg-background px-4 py-1 text-base font-thin text-[#1B1B1E]',
+            'flex h-[56px] w-full min-w-0 flex-row items-center rounded-[4px] border bg-background px-4 py-1 font-cabinet text-base font-thin text-[#1B1B1E]',
             // Error state border color
             hasError ? 'border-error' : 'border-[#DFDFE1]',
             // Add right padding only if we have the eye icon to prevent text overlap
             isSecureInput && 'pr-12',
             isPhoneInput && 'pl-14',
+            icon && 'pl-10',
             // Disabled state styling
             props.editable === false &&
               cn(
@@ -83,7 +85,6 @@ const Input = React.forwardRef<TextInput, InputProps>(
           </Pressable>
         )}
 
-        {/* Conditionally render the toggle button */}
         {isPhoneInput && (
           <Pressable
             onPress={togglePasswordVisibility}
@@ -94,6 +95,12 @@ const Input = React.forwardRef<TextInput, InputProps>(
             hitSlop={8}>
             <Text className="text-primary">+234 </Text>
           </Pressable>
+        )}
+
+        {icon && (
+          <View className="absolute left-4 top-0 flex h-[56px] items-center justify-center">
+            {icon}
+          </View>
         )}
       </View>
     );

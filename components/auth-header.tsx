@@ -6,12 +6,13 @@ import { Text } from './ui/text';
 
 interface AuthHeaderProps {
   title: string;
+  showBackButton?: boolean;
 }
 
-export function AuthHeader({ title }: AuthHeaderProps) {
+export function AuthHeader({ title, showBackButton: showBackButton = true }: AuthHeaderProps) {
   return (
     <View className="relative flex w-full flex-row items-center justify-center">
-      {router.canGoBack() && (
+      {router.canGoBack() && showBackButton && (
         <Pressable onPress={() => router.back()} className="absolute left-0">
           <Icon as={ArrowLeft} size={28} color={'#B4B4BC'} />
         </Pressable>

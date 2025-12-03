@@ -42,7 +42,7 @@ export default function Screen() {
     },
     onSubmit: async ({ value }) => {
       toast.success('Login was successful');
-      console.log(value);
+      login();
     },
   });
 

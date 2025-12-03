@@ -10,6 +10,8 @@ interface LayoutProps {
   horizontalPadding?: boolean;
   paddingHorizontal?: number;
   keyboardAvoiding?: boolean;
+  useBackground?: boolean;
+  stickyHeader?: React.ReactNode; // NEW
 }
 
 export function Layout({
@@ -20,16 +22,23 @@ export function Layout({
   paddingHorizontal = 24,
   scrollable = true,
   topPadding = 8,
+  useBackground = false,
+  stickyHeader, // NEW
 }: LayoutProps) {
   const insets = useSafeAreaInsets();
 
-  // Calculate safe area padding
   const safePaddingTop = insets.top + topPadding;
   const safePaddingBottom = insets.bottom + bottomPadding;
 
   const containerStyles: ViewStyle = {
     flex: 1,
+    backgroundColor: useBackground ? '#FFFFFF' : undefined,
+  };
+
+  const stickyHeaderStyles: ViewStyle = {
     paddingTop: safePaddingTop,
+    ...(horizontalPadding && { paddingHorizontal }),
+    backgroundColor: useBackground ? '#FFFFFF' : undefined,
   };
 
   const contentContainerStyles: ViewStyle = {
@@ -38,21 +47,28 @@ export function Layout({
     ...(horizontalPadding && { paddingHorizontal }),
   };
 
-  // Render content with or without scroll
   const renderContent = () => {
     if (scrollable) {
       return (
         <ScrollView
           contentContainerStyle={contentContainerStyles}
           keyboardShouldPersistTaps="handled"
+          nestedScrollEnabled={true}
           showsVerticalScrollIndicator={false}>
           {children}
         </ScrollView>
       );
     }
-
     return <View style={[contentContainerStyles, { flex: 1 }]}>{children}</View>;
   };
+
+  const content = (
+    <>
+      {/* Sticky header section - NEW */}
+      {stickyHeader && <View style={stickyHeaderStyles}>{stickyHeader}</View>}
+      {renderContent()}
+    </>
+  );
 
   return (
     <>
@@ -61,10 +77,10 @@ export function Layout({
           style={containerStyles}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
-          {renderContent()}
+          {content}
         </KeyboardAvoidingView>
       ) : (
-        <View style={containerStyles}>{renderContent()}</View>
+        <View style={containerStyles}>{content}</View>
       )}
     </>
   );
