@@ -42,7 +42,7 @@ const data = [
     name: 'Rate Xervices',
     icon: require('@/assets/icons/rate.svg'),
     isLink: true,
-    onPress: () => router.navigate('/profile'),
+    onPress: () => router.navigate('/profile/rate'),
   },
   {
     name: 'Support',

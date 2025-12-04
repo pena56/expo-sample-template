@@ -59,6 +59,14 @@ export default function Layout() {
           title: 'Promotions & Rewards',
         }}
       />
+
+      <Stack.Screen
+        name="rate"
+        options={{
+          headerShown: false,
+          title: 'Rate Xervices',
+        }}
+      />
     </Stack>
   );
 }
