@@ -7,6 +7,10 @@ import { LoadingIndicator } from '../ui/loading-indicator';
 import { useEffect } from 'react';
 
 export function SuccessSheet(props: SheetProps<'success-sheet'>) {
+  const imageSrc = props.payload?.useCheckImage
+    ? require('@/assets/images/success-check.svg')
+    : require('@/assets/images/success.svg');
+
   useEffect(() => {
     const redirectTimeout = setTimeout(() => {
       SheetManager.hide('success-sheet');
@@ -41,7 +45,7 @@ export function SuccessSheet(props: SheetProps<'success-sheet'>) {
         )}
 
         <Image
-          source={require('@/assets/images/success.svg')}
+          source={imageSrc}
           style={{ width: '100%', aspectRatio: '295/102', marginHorizontal: 'auto' }}
           contentFit="contain"
         />

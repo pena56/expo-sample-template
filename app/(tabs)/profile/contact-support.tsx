@@ -9,66 +9,18 @@ import { router } from 'expo-router';
 
 const data = [
   {
-    name: 'Personal Details',
-    icon: require('@/assets/icons/personal.svg'),
+    name: 'Customer Support',
+    icon: require('@/assets/icons/customer.svg'),
     isLink: true,
     isDestructive: false,
-    onPress: () => router.navigate('/profile/personal'),
+    onPress: () => router.navigate('/profile/mail-support'),
   },
   {
-    name: 'Password',
-    icon: require('@/assets/icons/password.svg'),
+    name: 'Whatsapp ',
+    icon: require('@/assets/icons/whatsapp.svg'),
     isLink: true,
     isDestructive: false,
     onPress: () => router.navigate('/profile/password'),
-  },
-  {
-    name: 'Dispute',
-    icon: require('@/assets/icons/dispute.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/disputes'),
-  },
-  // {
-  //   name: 'Payment',
-  //   icon: require('@/assets/icons/payment.svg'),
-  //   isLink: true,
-  //   onPress: () => router.navigate('/profile'),
-  // },
-  {
-    name: 'Promo',
-    icon: require('@/assets/icons/promo.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/promo'),
-  },
-  {
-    name: 'Rate Xervices',
-    icon: require('@/assets/icons/rate.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/rate'),
-  },
-  {
-    name: 'Support',
-    icon: require('@/assets/icons/support.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/support'),
-  },
-  {
-    name: 'About Xervices',
-    icon: require('@/assets/icons/about.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/about'),
-  },
-  {
-    name: 'Logout',
-    icon: require('@/assets/icons/logout.svg'),
-    isLink: false,
-    isDestructive: true,
-    onPress: () => router.navigate('/profile'),
   },
 ];
 
@@ -78,7 +30,7 @@ export default function Screen() {
       useBackground
       stickyHeader={
         <View className="pb-4">
-          <AuthHeader title="Settings" showBackButton={false} />
+          <AuthHeader title="Support" />
         </View>
       }>
       <View className="flex-1 gap-6">

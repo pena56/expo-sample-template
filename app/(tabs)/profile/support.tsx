@@ -6,69 +6,29 @@ import { AuthHeader } from '@/components/auth-header';
 import { Image } from 'expo-image';
 import { ChevronRight } from 'lucide-react-native';
 import { router } from 'expo-router';
+import { SheetManager } from 'react-native-actions-sheet';
 
 const data = [
   {
-    name: 'Personal Details',
-    icon: require('@/assets/icons/personal.svg'),
+    name: 'Contact Support',
+    icon: require('@/assets/icons/contact.svg'),
     isLink: true,
     isDestructive: false,
-    onPress: () => router.navigate('/profile/personal'),
+    onPress: () => router.navigate('/profile/contact-support'),
   },
   {
-    name: 'Password',
-    icon: require('@/assets/icons/password.svg'),
+    name: 'Policies',
+    icon: require('@/assets/icons/policy.svg'),
     isLink: true,
     isDestructive: false,
-    onPress: () => router.navigate('/profile/password'),
+    onPress: () => router.navigate('/profile/policies'),
   },
   {
-    name: 'Dispute',
-    icon: require('@/assets/icons/dispute.svg'),
+    name: 'Delete account',
+    icon: require('@/assets/icons/delete.svg'),
     isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/disputes'),
-  },
-  // {
-  //   name: 'Payment',
-  //   icon: require('@/assets/icons/payment.svg'),
-  //   isLink: true,
-  //   onPress: () => router.navigate('/profile'),
-  // },
-  {
-    name: 'Promo',
-    icon: require('@/assets/icons/promo.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/promo'),
-  },
-  {
-    name: 'Rate Xervices',
-    icon: require('@/assets/icons/rate.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/rate'),
-  },
-  {
-    name: 'Support',
-    icon: require('@/assets/icons/support.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/support'),
-  },
-  {
-    name: 'About Xervices',
-    icon: require('@/assets/icons/about.svg'),
-    isLink: true,
-    isDestructive: false,
-    onPress: () => router.navigate('/profile/about'),
-  },
-  {
-    name: 'Logout',
-    icon: require('@/assets/icons/logout.svg'),
-    isLink: false,
     isDestructive: true,
-    onPress: () => router.navigate('/profile'),
+    onPress: () => SheetManager.show('delete-account-sheet'),
   },
 ];
 
@@ -78,7 +38,7 @@ export default function Screen() {
       useBackground
       stickyHeader={
         <View className="pb-4">
-          <AuthHeader title="Settings" showBackButton={false} />
+          <AuthHeader title="Support" />
         </View>
       }>
       <View className="flex-1 gap-6">

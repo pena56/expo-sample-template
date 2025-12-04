@@ -67,6 +67,62 @@ export default function Layout() {
           title: 'Rate Xervices',
         }}
       />
+
+      <Stack.Screen
+        name="support"
+        options={{
+          headerShown: false,
+          title: 'Support',
+        }}
+      />
+
+      <Stack.Screen
+        name="contact-support"
+        options={{
+          headerShown: false,
+          title: 'Support',
+        }}
+      />
+
+      <Stack.Screen
+        name="mail-support"
+        options={{
+          headerShown: false,
+          title: 'Support',
+        }}
+      />
+
+      <Stack.Screen
+        name="policies"
+        options={{
+          headerShown: false,
+          title: 'Policies',
+        }}
+      />
+
+      <Stack.Screen
+        name="terms"
+        options={{
+          headerShown: false,
+          title: 'Terms & conditions',
+        }}
+      />
+
+      <Stack.Screen
+        name="cancellation-policy"
+        options={{
+          headerShown: false,
+          title: 'Cancellation policies',
+        }}
+      />
+
+      <Stack.Screen
+        name="about"
+        options={{
+          headerShown: false,
+          title: 'About Xervices',
+        }}
+      />
     </Stack>
   );
 }
