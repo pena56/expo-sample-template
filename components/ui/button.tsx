@@ -16,23 +16,23 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'border border-[#CC5600] bg-[#FE6A00] shadow-sm shadow-black/5 active:bg-primary/90',
+          'shadow-black/5 border border-[#CC5600] bg-[#FE6A00] shadow-sm active:bg-primary/90',
           Platform.select({ web: 'hover:bg-primary/90' })
         ),
         destructive: cn(
-          'bg-destructive shadow-sm shadow-black/5 active:bg-destructive/90 dark:bg-destructive/60',
+          'shadow-black/5 bg-destructive shadow-sm active:bg-destructive/90 dark:bg-destructive/60',
           Platform.select({
             web: 'hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
           })
         ),
         outline: cn(
-          'border border-border bg-background shadow-sm shadow-black/5 active:bg-accent dark:border-input dark:bg-input/30 dark:active:bg-input/50',
+          'shadow-black/5 border border-border bg-background shadow-sm active:bg-accent dark:border-input dark:bg-input/30 dark:active:bg-input/50',
           Platform.select({
             web: 'hover:bg-accent dark:hover:bg-input/50',
           })
         ),
         secondary: cn(
-          'bg-secondary shadow-sm shadow-black/5 active:bg-secondary/80',
+          'shadow-black/5 bg-secondary shadow-sm active:bg-secondary/80',
           Platform.select({ web: 'hover:bg-secondary/80' })
         ),
         ghost: cn(
@@ -43,7 +43,7 @@ const buttonVariants = cva(
       },
       size: {
         default: cn('h-14 px-4 py-2 sm:h-9', Platform.select({ web: 'has-[>svg]:px-3' })),
-        sm: cn('h-12 gap-1.5 px-3 sm:h-8', Platform.select({ web: 'has-[>svg]:px-2.5' })),
+        sm: cn('h-8 gap-1.5 px-3 sm:h-8', Platform.select({ web: 'has-[>svg]:px-2.5' })),
         lg: cn('h-16 rounded-md px-6 sm:h-10', Platform.select({ web: 'has-[>svg]:px-4' })),
         icon: 'h-12 w-12 sm:h-9 sm:w-9',
       },
@@ -78,7 +78,7 @@ const buttonTextVariants = cva(
       },
       size: {
         default: '',
-        sm: '',
+        sm: 'font-cabinet-medium',
         lg: '',
         icon: '',
       },

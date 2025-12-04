@@ -52,6 +52,13 @@ export default function Layout() {
           title: 'Disputes',
         }}
       />
+      <Stack.Screen
+        name="promo"
+        options={{
+          headerShown: false,
+          title: 'Promotions & Rewards',
+        }}
+      />
     </Stack>
   );
 }

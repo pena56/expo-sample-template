@@ -26,17 +26,17 @@ const data = [
     isLink: true,
     onPress: () => router.navigate('/profile/disputes'),
   },
-  {
-    name: 'Payment',
-    icon: require('@/assets/icons/payment.svg'),
-    isLink: true,
-    onPress: () => router.navigate('/profile'),
-  },
+  // {
+  //   name: 'Payment',
+  //   icon: require('@/assets/icons/payment.svg'),
+  //   isLink: true,
+  //   onPress: () => router.navigate('/profile'),
+  // },
   {
     name: 'Promo',
     icon: require('@/assets/icons/promo.svg'),
     isLink: true,
-    onPress: () => router.navigate('/profile'),
+    onPress: () => router.navigate('/profile/promo'),
   },
   {
     name: 'Rate Xervices',
