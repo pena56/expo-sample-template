@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react-native';
 import { Text } from './ui/text';
 
 interface AuthHeaderProps {
-  title: string;
+  title?: string;
   showBackButton?: boolean;
 }
 

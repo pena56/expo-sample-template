@@ -43,6 +43,7 @@ export function Layout({
 
   const contentContainerStyles: ViewStyle = {
     flexGrow: 1,
+    paddingTop: stickyHeader ? 0 : safePaddingTop,
     paddingBottom: safePaddingBottom,
     ...(horizontalPadding && { paddingHorizontal }),
   };

@@ -26,7 +26,7 @@ const buttonVariants = cva(
           })
         ),
         outline: cn(
-          'shadow-black/5 border border-border bg-background shadow-sm active:bg-accent dark:border-input dark:bg-input/30 dark:active:bg-input/50',
+          'shadow-black/5 border border-[#CC5600] bg-white shadow-sm active:bg-accent',
           Platform.select({
             web: 'hover:bg-accent dark:hover:bg-input/50',
           })
@@ -66,7 +66,7 @@ const buttonTextVariants = cva(
         default: 'text-primary-foreground',
         destructive: 'text-white',
         outline: cn(
-          'group-active:text-accent-foreground',
+          'text-[#CC5600]',
           Platform.select({ web: 'group-hover:text-accent-foreground' })
         ),
         secondary: 'text-secondary-foreground',

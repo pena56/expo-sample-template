@@ -3,6 +3,7 @@ import { Text } from '../ui/text';
 import { Button } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { ArrowUpRight, BadgeCheck, X } from 'lucide-react-native';
+import { router } from 'expo-router';
 
 export function ActiveJobs() {
   const IS_EMPTY = false;
@@ -12,7 +13,7 @@ export function ActiveJobs() {
       <Text className="font-cabinet-medium text-xs uppercase">Active Jobs</Text>
 
       {/* Incomplete search */}
-      {/* <View
+      <View
         style={{
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 2 },
@@ -40,7 +41,7 @@ export function ActiveJobs() {
             <ArrowUpRight size={14} color={'#FE6A00'} />
           </Pressable>
         </View>
-      </View> */}
+      </View>
 
       {IS_EMPTY ? (
         <View className="flex w-full items-center justify-center gap-5 rounded-[8px] border border-[#D4D4D8] p-4">
@@ -94,6 +95,88 @@ export function ActiveJobs() {
           </View>
         </View>
       )}
+
+      <View
+        style={{
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 8,
+          elevation: 4,
+        }}
+        className="flex gap-4 rounded-[8px] bg-white p-4">
+        <View className="flex flex-row items-center justify-between">
+          <Text className="text-sm text-[#737381]">8 artisans sent offers</Text>
+        </View>
+
+        <View className="flex flex-row items-center justify-between">
+          <View className="flex-row">
+            <Avatar
+              alt="@mrzachnugent"
+              className="-mr-2 h-6 w-6 border-2 border-background web:border-0 web:ring-2 web:ring-background">
+              <AvatarImage source={{ uri: 'https://github.com/mrzachnugent.png' }} />
+              <AvatarFallback>
+                <Text>ZN</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Avatar
+              alt="@leerob"
+              className="-mr-2 h-6 w-6 border-2 border-background web:border-0 web:ring-2 web:ring-background">
+              <AvatarImage source={{ uri: 'https://github.com/leerob.png' }} />
+              <AvatarFallback>
+                <Text>LR</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Avatar
+              alt="@evilrabbit"
+              className="-mr-2 h-6 w-6 border-2 border-background web:border-0 web:ring-2 web:ring-background">
+              <AvatarImage source={{ uri: 'https://github.com/evilrabbit.png' }} />
+              <AvatarFallback>
+                <Text>ER</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Avatar
+              alt="@mrzachnugent"
+              className="-mr-2 h-6 w-6 border-2 border-background web:border-0 web:ring-2 web:ring-background">
+              <AvatarImage source={{ uri: 'https://github.com/mrzachnugent.png' }} />
+              <AvatarFallback>
+                <Text>ZN</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Avatar
+              alt="@leerob"
+              className="-mr-2 h-6 w-6 border-2 border-background web:border-0 web:ring-2 web:ring-background">
+              <AvatarImage source={{ uri: 'https://github.com/leerob.png' }} />
+              <AvatarFallback>
+                <Text>LR</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Avatar
+              alt="@evilrabbit"
+              className="-mr-2 h-6 w-6 border-2 border-background web:border-0 web:ring-2 web:ring-background">
+              <AvatarImage source={{ uri: 'https://github.com/evilrabbit.png' }} />
+              <AvatarFallback>
+                <Text>ER</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Avatar
+              alt="@evilrabbit"
+              className="-mr-2 h-6 w-6 border-2 border-background bg-[#F4F4F5] web:border-0 web:ring-2 web:ring-background">
+              <AvatarFallback>
+                <Text className="font-cabinet-bold text-xs">+2</Text>
+              </AvatarFallback>
+            </Avatar>
+          </View>
+
+          <Pressable
+            onPress={() => router.navigate('/book/offer')}
+            className="flex flex-row items-center gap-1">
+            <Text className="font-cabinet-bold text-sm text-primary">See offers</Text>
+
+            <ArrowUpRight size={14} color={'#FE6A00'} />
+          </Pressable>
+        </View>
+      </View>
     </View>
   );
 }

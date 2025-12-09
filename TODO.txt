@@ -1,3 +1,4 @@
-Install Expo Image
-Install Expo font
-Install Expo Haptics
+Install Expo File manager
+Install Expo Camera
+Install Maps
+Install Contacts

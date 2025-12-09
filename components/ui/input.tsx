@@ -12,10 +12,14 @@ interface InputProps extends TextInputProps {
   /** Whether the field has a validation error */
   hasError?: boolean;
   icon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 const Input = React.forwardRef<TextInput, InputProps>(
-  ({ className, placeholderClassName, secureTextEntry, hasError, icon, ...props }, ref) => {
+  (
+    { className, placeholderClassName, secureTextEntry, hasError, icon, rightIcon, ...props },
+    ref
+  ) => {
     const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
 
     // Determine if this is meant to be a secure input (password field)
@@ -44,6 +48,7 @@ const Input = React.forwardRef<TextInput, InputProps>(
             isSecureInput && 'pr-12',
             isPhoneInput && 'pl-14',
             icon && 'pl-10',
+            rightIcon && 'pr-12',
             // Disabled state styling
             props.editable === false &&
               cn(
@@ -100,6 +105,12 @@ const Input = React.forwardRef<TextInput, InputProps>(
         {icon && (
           <View className="absolute left-4 top-0 flex h-[56px] items-center justify-center">
             {icon}
+          </View>
+        )}
+
+        {rightIcon && (
+          <View className="absolute right-4 top-0 flex h-[56px] items-center justify-center">
+            {rightIcon}
           </View>
         )}
       </View>
